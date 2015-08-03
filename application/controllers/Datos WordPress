@@ -1,0 +1,20 @@
+Software is now being installed. Please make sure you have copied installation details to safe location:
+Software: WordPress
+Version: 3.3.1
+Installation URL: http://josegiron.2trweb.com/blog
+Admin Login URL: http://josegiron.2trweb.com/blog/wp-admin
+Admin uername: JoseDavid
+Admin password: 1143231494ABC_
+Database Name: u468186448_alyhu
+Database Username: u468186448_utyqy
+Database Password: ahahyneMed
+
+UPDATE SGOPCIOPE SET OPOPDESC = INOPCIDESC , OPOPESTA = INOPCIESTA WHERE OPCICODI = INOPCICODI;
+
+
+ SELECT MAX(OPOPID)
+                INTO CodOPci
+                FROM SGOPCIOPE;
+           
+                INSERT INTO SGOPCIOPE(OPOPID, OPCICODI, OPOPOPER, OPOPDESC, OPOPESTA)
+                VALUES (CodOPci, INOPCICODI, 'VIEW', INOPCIDESC, 'A' );

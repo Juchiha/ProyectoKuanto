@@ -1,0 +1,40 @@
+
+.col-md-3 a img{position: relative !important; top: 9px !important;}
+header .row .col-md-2 {margin-top: 7px !important;}
+@media(max-width:957px){header .row .col-md-2 {float: right !important;}}
+@media(min-width:992px) and (max-width:1024px){
+    .parrafo{padding-left: 82px !important;}
+    .row{margin-left: -45px !important;}
+    .col-sm-1{width: 5.33333% !important;}
+    .col-sm-2{width: 19.666667% !important;}}
+@media(min-width:600px) and (max-width:991px){
+    .col-xs-1,.col-sm-1,.col-md-1,.col-lg-1,.col-xs-2,.col-sm-2,.col-md-2,.col-lg-2,.col-xs-3,.col-sm-3,.col-md-3,.col-lg-3,.col-xs-4,.col-sm-4,.col-md-4,.col-lg-4,.col-xs-5,.col-sm-5,.col-md-5,.col-lg-5,.col-xs-6,.col-sm-6,.col-md-6,.col-lg-6,.col-xs-7,.col-sm-7,.col-md-7,.col-lg-7,.col-xs-8,.col-sm-8,.col-md-8,.col-lg-8,.col-xs-9,.col-sm-9,.col-md-9,.col-lg-9,.col-xs-10,.col-sm-10,.col-md-10,.col-lg-10,.col-xs-11,.col-sm-11,.col-md-11,.col-lg-11,.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{display: inline-block !important;}
+    header .row .col-md-12 {display: inherit !important;}
+    .col-md-12 .row .col-md-12, .col-md-12 .row .col-md-1{display: none !important;}
+    .col-md-4{display: inline-table !important; float: left !important;}}
+@media(min-width:600px) and (max-width:700px){
+    .row div .row div.col-md-5 .row{text-align: center !important; vertical-align: top !important; margin: 0 8% !important;}
+    .parrafo{width: 50% !important; float: left !important; padding-top: 0 !important; text-align: left !important;}
+    .col-sm-1{width: 5.33333% !important;}
+    .col-sm-2{width: 19.666667% !important;}
+    .col-md-6{width: 47.666667% !important;}}
+@media(min-width:701px) and (max-width:850px){
+    .row div .row div.col-md-5 .row{text-align: center !important; vertical-align: top !important; margin: 0 14% !important;}
+    .parrafo{width: 60% !important; float: left !important; padding-top: 0 !important; text-align: left !important;}
+    .col-md-6{width: 39.666667% !important;}
+    .col-sm-1{width: 9.33333% !important;}}
+@media(min-width:851px) and (max-width:991px){
+    .row div .row div.col-md-5 .row{text-align: center !important; vertical-align: top !important; margin: 0 14% !important;}
+    .parrafo{width: 60% !important; float: left !important; padding-top: 0 !important; text-align: left !important;}}
+@media(min-width:320px) and (max-width:481px){
+    header .row .col-md-3 {text-align: center !important; position: relative !important; top: -10px !important;}
+    header .row .col-md-12 {display: none !important;}
+    header {position: inherit !important;}
+    header .row .col-md-2 {position: relative !important; top: -10px !important;}
+    .col-md-4 {text-align: center !important; z-index: 23 !important;}
+    header .row .col-md-2 {float: inherit !important; clear: both !important;}
+    .btn-primary {margin-top: 15px !important;}
+    .parrafo{margin: 0 10% !important; text-align: center !important;}
+    .col-sm-2 {text-align: center !important; margin: 8px 0 !important;}
+    .col-md-6 {text-align: center !important; padding: 0 55px !important;}}
+/* End of Customized Code */
