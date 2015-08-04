@@ -7,14 +7,22 @@
 
 		$urlMostrar = '';
 		$urlMostrar = "<a href='".base_url()."blog/verentrada/".$fila['pos_id']."'> Ver mas</a>";
-
+		$contenido = $fila['pos_descripcion'];
+		$imagen = '';
+		$contenido = getLongitudString($contenido, $urlMostrar);
+		if($fila['pos_articulo'] == 1){
+			$imagen = "<a class='fancybox' href='".base_url().$fila['pos_imagen']."'><img src=".base_url().$fila['pos_imagen']." class='imagenblog' ></a>";
+		}else{
+			$imagen = "<a class='fancybox' href='".base_url()."Images/post/".$fila['pos_imagen']."'><img src=".base_url()."Images/post/".$fila['pos_imagen']." class='imagenblog' ></a>";
+		}
+		
 		$Lsql = "<div class='row-fluid sombra' background-color:#E5E5E5;>
 					<div class='col-md-12'>
 						<p>".$fila['pos_fecha']."</p>
-						<p><a href='".base_url()."blog/verentrada/".$fila['pos_id']."'>".$fila['pos_titulo']."</a></p>
-						<p style='text-align:justify;'>".getLongitudString2($fila['pos_contenido'], $urlMostrar)."</p>
+						<p><h1><a href='".base_url()."blog/verentrada/".$fila['pos_id']."'>".$fila['pos_titulo']."</a></h1></p>
+						<p style='text-align:justify;'>".$contenido."</p>
 						<p><b>Autor : ".$fila['emp_nombre']." ".$fila['emp_apellido']."</b></p>
-						<a class='fancybox' href='".base_url()."Images/post/".$fila['pos_imagen']."'><img src=".base_url()."Images/post/".$fila['pos_imagen']." class='imagenblog' ></a>
+						".$imagen."
 					</div>
 				</div>
 				<div>&nbsp;</div>		
@@ -29,16 +37,16 @@
 			$res = $ci->Blog_model->getlikemio($fila['pos_id'], $ci->session->userdata('userId'));
 			$Count = $ci->Blog_model->getCountLikes($fila['pos_id']);
 			if($res == 0){
-				$Lsql .= "<a class='likeClass' style='cursor:pointer;' valuePost='".$fila['pos_id']."' id='megusta_".$fila['pos_id']."' otro='nomegusta_".$fila['pos_id']."' alt='Me gusta'><i class='fa fa-thumbs-o-up'></i></a>";
-				$Lsql .= "<a style='cursor:pointer; display:none;' class='NolikeClass' valuePost='".$fila['pos_id']."' id='nomegusta_".$fila['pos_id']."' otro='megusta_".$fila['pos_id']."' alt='te gusta esto'><i class='fa fa-thumbs-o-down'></i></a>";
+				$Lsql .= "<a class='likeClass' style='cursor:pointer; ' valuePost='".$fila['pos_id']."' id='megusta_".$fila['pos_id']."' otro='nomegusta_".$fila['pos_id']."' alt='Me gusta'><i class='fa fa-thumbs-o-up'></i></a>";
+				$Lsql .= "<a style='cursor:pointer; display:none; color: red;' class='NolikeClass' valuePost='".$fila['pos_id']."' id='nomegusta_".$fila['pos_id']."' otro='megusta_".$fila['pos_id']."' alt='te gusta esto'><i class='fa fa-thumbs-o-up'></i></a>";
 				$Lsql .= "&nbsp;&nbsp;<a id='countLikes_".$fila['pos_id']."' alt='Total likes'>".$Count."</a>";
 			}else{
-				$Lsql .= "<a style='cursor:pointer; ' class='NolikeClass' valuePost='".$fila['pos_id']."' id='nomegusta_".$fila['pos_id']."' otro='megusta_".$fila['pos_id']."' alt='te gusta esto'><i class='fa fa-thumbs-o-down'></i></a>";
+				$Lsql .= "<a style='cursor:pointer; color: red;' class='NolikeClass' valuePost='".$fila['pos_id']."' id='nomegusta_".$fila['pos_id']."' otro='megusta_".$fila['pos_id']."' alt='te gusta esto'><i class='fa fa-thumbs-o-up'></i></a>";
 				$Lsql .= "<a class='likeClass' style='cursor:pointer; display:none;' valuePost='".$fila['pos_id']."' id='megusta_".$fila['pos_id']."' otro='nomegusta_".$fila['pos_id']."'' alt='Me gusta'><i class='fa fa-thumbs-o-up'></i></a>";
 				$Lsql .= "&nbsp;&nbsp;<a id='countLikes_".$fila['pos_id']."' alt='Total likes'>".$Count."</a>";
 			}	
 		}else{
-			$Lsql .= '<a href="login/index/blog" >Login a tu cuenta!!</a>';
+			$Lsql .= '<a href="'.base_url().'login/index/blog" >Login a tu cuenta!</a>';
 		}
 					
 		$comantarios = $ci->Blog_model->getcomentsByPost($fila['pos_id']);	
@@ -64,7 +72,7 @@
 						".$datas."
 					</div>
 				</div>";
-				
+
 		if($this->session->userdata('login_ok')){
 			$Lsql .= "<div class='row-fluid'>
 					<div class='col-md-12'>
@@ -78,17 +86,16 @@
 	}
 
 	
-    
+    function getLongitudString($cadena, $url){
+        $longitudString = strlen($cadena);
+        
+        $cosa = '';
+        if($longitudString > 200){
+            $cosa = substr($cadena, 0, 200);
+            $cosa .= "... ".$url."</p>"; 
+        }
+        return $cosa;
+    }
 
 ?>
 
-       <?php
-            function getLongitudString2($cadena, $url){
-                $longitudString = strlen($cadena);
-                if($longitudString > 500){
-                    $cadena = substr($cadena, 0, 500);
-                    $cadena .= "... ".$url; 
-                }
-                return $cadena;
-            }
-        ?>

@@ -217,13 +217,13 @@
                         <div class="col-md-10">
                             <div class="row">
                                 <div class="col-md-1">&nbsp;</div>
-                                <div class="col-md-5" style="text-align:justify; ">
+                                <div class="col-md-5" id="mesagesPares" style="text-align:justify; ">
                                     <?php 
                                         $datos = array('datos' => $datosImpares );
                                         $this->load->view('Blog/cargarBlog', $datos );
                                     ?>
                                 </div>
-                                <div class="col-md-5" style="text-align:justify;">
+                                <div class="col-md-5" id="mesagesinPares" style="text-align:justify;">
                                     <?php
                                         $data = array('datos' => $datosPares);
                                         $this->load->view('Blog/cargarBlog', $data);  
@@ -280,6 +280,8 @@
         <script type="text/javascript" src="<?PHP echo base_url(); ?>fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
   
         <script type="text/javascript">
+            var Inicio = 11;
+            var Limite = 10;
             $(function(){
                 if($(window).width() < 500){
                     $("#nombresitio").removeClass('hed');  
@@ -322,7 +324,35 @@
                     e.preventDefault();
                     window.open($(this).attr('href'),'_blank', "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=500, height=500");
                 });
+
+
+                $(window).scroll(function(){
+                    if ($(window).scrollTop() == $(document).height() - $(window).height()){
+                        cargardatospar();
+                        cargardatosimpar();
+
+                        Inicio += Limite;
+                    }                  
+                });
+
+
             });
+
+            function cargardatospar(){
+                $.post("<?php echo base_url();?>blog/cagarDatos", { inicio: Inicio, fin : Limite , tipo: "PAR"}, function(data){
+                    if (data != "") {
+                        $("#mesagesPares").append(data); 
+                    }
+                });              
+            }
+
+            function cargardatosimpar(){
+                $.post("<?php echo base_url();?>blog/cagarDatos", { inicio: Inicio, fin : Limite , tipo: "IMPAR"}, function(data){
+                    if (data != "") {
+                        $("#mesagesinPares").append(data); 
+                    }
+                });              
+            }
         </script>
     
 

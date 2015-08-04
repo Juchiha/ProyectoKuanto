@@ -59,13 +59,13 @@ class Blog_model extends CI_Model {
         return mysql_query($Lsql);
     }
 
-    function getPostImpares(){
-    	$Lsql = "SELECT * FROM mp_post JOIN mp_empresa ON emp_id = pos_emp_id WHERE pos_estado_id = 1 AND mod(pos_id, 2) <> 0 order by pos_id DESC  ";
+    function getPostImpares($inicio, $fin){
+    	$Lsql = "SELECT * FROM mp_post JOIN mp_empresa ON emp_id = pos_emp_id WHERE pos_estado_id = 1 AND mod(pos_id, 2) <> 0 order by pos_id DESC limit ".$inicio.", ".$fin;
     	return mysql_query($Lsql);
     }
 
-    function getPostPares(){
-    	$Lsql = "SELECT * FROM mp_post JOIN mp_empresa ON emp_id = pos_emp_id WHERE pos_estado_id = 1 AND mod(pos_id, 2) = 0  order by pos_id DESC ";
+    function getPostPares($inicio, $fin){
+    	$Lsql = "SELECT * FROM mp_post JOIN mp_empresa ON emp_id = pos_emp_id WHERE pos_estado_id = 1 AND mod(pos_id, 2) = 0  order by pos_id DESC limit ".$inicio.", ".$fin;
     	return mysql_query($Lsql);
     }
 

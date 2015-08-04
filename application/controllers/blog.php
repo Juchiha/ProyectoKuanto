@@ -11,8 +11,8 @@ class Blog extends Mensajes{
     public function index(){
 
         $this->load->Model("Blog_model");
-        $Lsql = $this->Blog_model->getPostpares();
-        $Isql = $this->Blog_model->getPostImpares();
+        $Lsql = $this->Blog_model->getPostpares(0,10);
+        $Isql = $this->Blog_model->getPostImpares(0, 10);
         $datos = array('datosImpares' => $Isql, 'datosPares' => $Lsql); 
        
         if(!$this->session->userdata('login_ok')){
@@ -20,6 +20,20 @@ class Blog extends Mensajes{
         }else{
             $this->load->view('Blog/blogOnLogin', $datos);
         }
+    }
+
+    public function cagarDatos(){
+        $this->load->Model("Blog_model");
+        $inicio = $_POST["inicio"];
+        $fin    = $_POST["fin"];
+        $Lsql = "";
+        if($_POST["tipo"] == "PAR"){
+            $Lsql = $this->Blog_model->getPostpares($inicio, $fin);
+        }else{
+            $Lsql = $this->Blog_model->getPostImpares($inicio, $fin);
+        }
+        $datos = array('datos' => $Lsql); 
+        $this->load->view('Blog/cargarBlog2', $datos);
     }
 
 
