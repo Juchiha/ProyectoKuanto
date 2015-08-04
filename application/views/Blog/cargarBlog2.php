@@ -13,7 +13,7 @@
 		if($fila['pos_articulo'] == 1){
 			$imagen = "<a class='fancybox' href='".base_url().$fila['pos_imagen']."'><img src=".base_url().$fila['pos_imagen']." class='imagenblog' ></a>";
 		}else{
-			$imagen = "<a class='fancybox' href='".base_url()."Images/post/".$fila['pos_imagen']."'><img src=".base_url()."Images/post/".$fila['pos_imagen']." class='imagenblog' ></a>";
+			$imagen = "<a class='fancybox' href='".base_url()."Images/post/".$fila['pos_imagen']."'><img src=".base_url()."Images/post/miniaturas/".$fila['pos_imagen']." class='imagenblog' ></a>";
 		}
 		
 		$Lsql = "<div class='row-fluid sombra' background-color:#E5E5E5;>

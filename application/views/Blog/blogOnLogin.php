@@ -51,9 +51,9 @@
                 width: 100%;
                 text-align: center;
                 border: solid 3px #FFF;
-		box-shadow: 2px 2px 5px #888888;
-		-webkit-box-shadow: 2px 2px 5px #888888;
-		-moz-box-shadow: 2px 2px 5px #888888;
+		       box-shadow: 2px 2px 5px #888888;
+		      -webkit-box-shadow: 2px 2px 5px #888888;
+		      -moz-box-shadow: 2px 2px 5px #888888;
             }
 
             .comentar{

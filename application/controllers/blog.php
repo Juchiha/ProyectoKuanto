@@ -124,12 +124,14 @@ class Blog extends Mensajes{
 
         $idUser = $this->session->userdata('userId');
         $target_path = "/home/kefrensantiago/public_html/Images/post/";
+        //$target_path = "C:/wamp/www/Mexico/ProyectoKuanto/Images/post/";
         $target_path = $target_path . 'Post'.$idUser."_".basename($_FILES['filaInput']['name']); 
         $target_path = str_replace(' ', '', $target_path);
 
         copy($_FILES['filaInput']['tmp_name'], $target_path);
         $fileName =   'Post'.$idUser."_".basename($_FILES['filaInput']['name']);
         $fileName = str_replace(' ', '', $fileName);
+        $this->_create_thumbnail($fileName);
 
         $datos = array( 'pos_titulo'        => $titulo,
                         'pos_descripcion'   => $descripcion,
@@ -223,7 +225,7 @@ class Blog extends Mensajes{
         }    
     }
 
-    function _create_thumbnail($filename){
+    /*function _create_thumbnail($filename){
         $config['image_library'] = 'gd2';
         //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
         $config['source_image'] = "/home/kefrensantiago/public_html/Images/post/".$filename;
@@ -235,7 +237,7 @@ class Blog extends Mensajes{
         $config['height'] = 250;
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
-    }
+    }*/
 
 
     function like(){
@@ -371,6 +373,20 @@ class Blog extends Mensajes{
         $totla = $this->Notificaciones_model->countNotificaciones($this->session->userdata('userId'));
         $coun  = array('notificaciones' => $res, 'totalMensajes' => $totla );
         $this->load->view("Blog/notificaciones", $coun);
+    }
+
+    function _create_thumbnail($filename){
+        $config['image_library'] = 'gd2';
+        //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+        $config['source_image'] = "/home/kefrensantiago/public_html/Images/post/".$filename;
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+        $config['new_image']= "/home/kefrensantiago/public_html/Images/post/miniaturas";
+        $config['width'] = 400;
+        $config['height'] = 400;
+        $this->load->library('image_lib', $config); 
+        $this->image_lib->resize();
     }
 }
 ?>

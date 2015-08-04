@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-//$config['base_url']	= 'http://localhost:8089/Mexico/ProyectoKuanto/';
-$config['base_url']	= 'http://localhost/Mexico/ProyectoKuanto/';
+$config['base_url']	= 'http://localhost:8089/Mexico/ProyectoKuanto/';
+//$config['base_url']	= 'http://localhost/Mexico/ProyectoKuanto/';
 
 /*
 |--------------------------------------------------------------------------
